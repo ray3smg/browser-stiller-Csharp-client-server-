@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="fileclient/fileclient.csproj" />
+  <Project Path="fileserver/fileserver.csproj" />
+</Solution>
