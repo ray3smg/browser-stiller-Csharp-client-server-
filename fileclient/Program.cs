@@ -78,7 +78,7 @@ namespace fileclient
             {
                 await stream.WriteAsync(buffer, 0, bytesRead);
                 totalBytes += bytesRead;
-                Console.WriteLine($"Отправлено: {totalBytes / 1024 / 1024} МБ");
+                
             }
             await stream.FlushAsync();
 
